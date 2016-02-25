@@ -14,3 +14,24 @@ git pull origin master
 
 煎饼计划-github账号
 https://github.com/wuanlife/Jianbing_Android
+
+
+
+///////////////////////////////////////////////////////////////////////
+你可以按如下命令来生成sshkey
+
+ssh-keygen -t rsa -C "xxxxx@xxxxx.com"# Creates a new ssh key using the provided email
+# Generating public/private rsa key pair...
+查看你的public key，并把他添加到 Git @ OSC http://git.oschina.net/keys
+
+cat ~/.ssh/id_rsa.pub
+# ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....
+添加后，在终端（Terminal）中输入
+
+ssh -T git@git.oschina.net
+若返回
+
+Welcome to Git@OSC, yourname! 
+则证明添加成功。
+/////////////////////////////////////////////////////////////////////
+
