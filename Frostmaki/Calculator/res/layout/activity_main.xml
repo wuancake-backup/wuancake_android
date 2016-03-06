@@ -1,0 +1,172 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <TextView
+        android:id="@+id/textInput"
+        android:layout_width="match_parent"
+        android:background="#A4D3EE"
+        android:layout_height="100dp" />
+    
+    <TextView
+        android:id="@+id/textOnput"
+        android:layout_width="match_parent"
+        android:background="#FFA07A"
+        android:layout_height="100dp"
+         />
+        
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        
+        android:orientation="horizontal">
+        
+      <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <Button 
+            android:id="@+id/but_seven"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="7"/>
+        
+        <Button 
+            android:id="@+id/but_four"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="4"/>
+        
+        <Button 
+            android:id="@+id/but_one"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="1"/>
+        
+        <Button 
+            android:id="@+id/but_point"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="."/>
+        
+    </LinearLayout>
+
+      <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <Button 
+            android:id="@+id/but_eight"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="8"/>
+        
+        <Button 
+            android:id="@+id/but_five"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="5"/>
+        
+        <Button 
+            android:id="@+id/but_two"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="2"/>
+        
+        <Button 
+            android:id="@+id/but_zero"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="0"/>
+        
+      </LinearLayout>
+    
+        <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <Button 
+            android:id="@+id/but_nine"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="9"/>
+        
+        <Button 
+            android:id="@+id/but_six"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="6"/>
+        
+        <Button 
+            android:id="@+id/but_three"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="3"/>
+        
+        <Button 
+            android:id="@+id/but_equal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="="/>
+        
+       </LinearLayout>
+       
+         <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        
+        
+        
+        <Button 
+            android:id="@+id/but_add"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="+"/>
+        
+        <Button 
+            android:id="@+id/but_minus"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="-"/>
+        
+        <Button 
+            android:id="@+id/but_multiplied"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="*"/>
+        
+        <Button 
+            android:id="@+id/but_divided"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="/"/>
+       </LinearLayout>
+       
+       <LinearLayout 
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+          
+           android:orientation="vertical">
+           
+           <Button 
+            android:id="@+id/but_del"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center_horizontal"
+            android:text="del"/>
+        
+        <Button 
+            android:id="@+id/but_clear"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="c"/>
+       </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
