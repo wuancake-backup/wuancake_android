@@ -14,6 +14,10 @@ public class MainActivity extends Activity implements OnClickListener{
 	TextView inputText;
 	TextView OutputText;
 	
+	String inputStr;
+	String inputStr2;
+	String outputStr2;
+	
 	Button but_zero;
 	Button but_one;
 	Button but_two;
@@ -37,7 +41,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	
 	Button but_point;
 	
-	public String inputStr;    
+	  
 	
 	
 	
@@ -72,8 +76,10 @@ public class MainActivity extends Activity implements OnClickListener{
     	but_point=(Button)findViewById(R.id.but_point);
     	
     	inputStr=inputText.getText().toString();
+    	inputStr2=inputText.getText().toString();
+    	outputStr2=null;
     	
-    	
+    	//click事件
         but_one.setOnClickListener(this);
         but_two.setOnClickListener(this);
         but_three.setOnClickListener(this);
@@ -95,7 +101,7 @@ public class MainActivity extends Activity implements OnClickListener{
         but_divided.setOnClickListener(this);
         
         but_equal.setOnClickListener(this);
-        Log.d("cuowu", "button");
+        Log.d("cuowu", "button click");
     }
 
 	@Override
@@ -112,27 +118,35 @@ public class MainActivity extends Activity implements OnClickListener{
 		case R.id.but_nine:
 		case R.id.but_zero:
 		case R.id.but_point:
-			
+			if (inputText.getText()==null){
+				outputStr2=null;
+				OutputText.setText(outputStr2);
+			}
 			inputStr=inputStr+((Button)v).getText().toString();
+			inputStr2=inputStr2+((Button)v).getText().toString();
 			inputText.setText(inputStr);
+			getResult();
 			Log.d("cuowu", "123456789");
 			break;
 		case R.id.but_add:
 		case R.id.but_minus:
 		case R.id.but_multiplied:
 		case R.id.but_divided:
+			if (outputStr2!=null)
+			{
+			    inputStr2=outputStr2;
+			}
+			
 			inputStr=inputStr+" "+((Button)v).getText().toString()+" ";
+			inputStr2=inputStr2+((Button)v).getText().toString();
 			inputText.setText(inputStr);
+			
 			Log.d("cuowu", "+-*/");
 			break;
 		case R.id.but_del:
 			
-				if(inputStr.substring(inputStr.length())!=" "){
-			       inputStr=inputStr.substring(0, inputStr.length()-1);
-			       
-				}else{
-					inputStr=inputStr.substring(0, inputStr.length()-2);
-				}
+				inputStr=inputStr.substring(0, inputStr.length()-1);
+			     		
 				inputText.setText(inputStr);
 			
 			Log.d("cuowu", "del");
@@ -140,6 +154,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		case R.id.but_clear:
 			inputStr="";
 			inputText.setText(inputStr);
+			OutputText.setText("");
 			Log.d("cuowu", "clear");
 			break;
 		case R.id.but_equal:
@@ -151,37 +166,105 @@ public class MainActivity extends Activity implements OnClickListener{
 	}
 	
 	public void getResult(){
-		int int0=0;
-		int int1 =inputStr.indexOf(" ");//第一个空格
-		String str2 =inputStr.substring(0, int1);//前一个数字
-		double d2=Double.parseDouble(str2);
-		int int3 =inputStr.indexOf(" ", int1+2);//再往后一个空格
-		String str4 =inputStr.substring(int1+3);//后一个数字
-		double d4=Double.parseDouble(str4);
-		String str5 =inputStr.substring(int1+1);   //算数运算符
-		//int0=int0+2;
-		double d6 = 0;
-		if (str5.equals("+")){
-			d6=d2 + d4;
-		}else if(str5.equals("-")){
-			d6=d2 - d4;
-		}else if(str5.equals("*")){
-			d6=d2 * d4;
-		}else if(str5.equals("/")){
-			if(d4==0)
-			{
-				d6=0;
-			}else
-			{
-			    d6=d2 / d4;
+		int i;
+//		int k=0;
+//		int start=0;
+		double double1;
+		double double2;
+		double result;
+//		String a;
+//		String[] shuzu=null;
+		String string1=null;
+		String string2=null;
+	
+		
+			if(inputStr2.contains("+")||inputStr2.contains("-")||inputStr2.contains("*")||inputStr2.contains("/")){
+				if(inputStr2.contains("+")){
+					i=inputStr2.indexOf("+");
+					string1=inputStr2.substring(0,i);
+					string2=inputStr2.substring(i+1);
+					double1=Double.parseDouble(string1);
+					double2=Double.parseDouble(string2);
+					result=double1+double2;
+					outputStr2=Double.toString(result);
+				}else if(inputStr2.contains("-")){
+					i=inputStr2.indexOf("-");
+					string1=inputStr2.substring(0,i);
+					string2=inputStr2.substring(i+1);
+					double1=Double.parseDouble(string1);
+					double2=Double.parseDouble(string2);
+					result=double1-double2;
+					outputStr2=Double.toString(result);
+				}else if(inputStr2.contains("*")){
+					i=inputStr2.indexOf("*");
+					string1=inputStr2.substring(0,i);
+					string2=inputStr2.substring(i+1);
+					double1=Double.parseDouble(string1);
+					double2=Double.parseDouble(string2);
+					result=double1*double2;
+					outputStr2=Double.toString(result);
+				}else if(inputStr2.contains("/")){
+					i=inputStr2.indexOf("/");
+					string1=inputStr2.substring(0,i);
+					string2=inputStr2.substring(i+1);
+					double1=Double.parseDouble(string1);
+					double2=Double.parseDouble(string2);
+					result=double1/double2;
+					outputStr2=Double.toString(result);
+				}
+				OutputText.setText(outputStr2);
 			}
-		}
+			else
+			{
+				return;
+			}
+				
+//				for(i=0;i<=inputStr2.length();i++){
+//					a=inputStr2.substring(i);
+//				}
+			}
+//			if (a.equals("+")||a.equals("-")||a.equals("*")||a.equals("/")){
+//				
+//				shuzu[k]=inputStr2.substring(start,a.length());
+//				start=inputStr2.indexOf(a);
+//				k=k+1;
+//				start=start+1;
+//				//string2=inputStr2.substring(a.length()+1);
+//				Log.d("shuju", shuzu[k]+" ");
+//			}
+//           
+//            string1=string1+a;
 		
-		OutputText.setText((int)d6+"");	
-		
+//		int int1 =inputStr.indexOf(" ",int0);//第一个空格
+//		String str2 =inputStr.substring(0, int1);//前一个数字
+//		double d2=Double.parseDouble(str2);
+//		int int3 =inputStr.indexOf(" ", int1+2);//再往后一个空格
+//		String str4 =inputStr.substring(int1+3);//后一个数字
+//		double d4=Double.parseDouble(str4);
+//		String str5 =inputStr.substring(int1+1);   //算数运算符
+//		//int0=int0+2;
+//		double d6 = 0;
+//		if (str5.equals("+")){
+//			d6=d2 + d4;
+//		}else if(str5.equals("-")){
+//			d6=d2 - d4;
+//		}else if(str5.equals("*")){
+//			d6=d2 * d4;
+//		}else if(str5.equals("/")){
+//			if(d4==0)
+//			{
+//				d6=0;
+//			}else
+//			{
+//			    d6=d2 / d4;
+//			}
+//		}
+//		
+//		OutputText.setText((int)d6+"");	
+			
 	}
     
     
 
    
-}
+
