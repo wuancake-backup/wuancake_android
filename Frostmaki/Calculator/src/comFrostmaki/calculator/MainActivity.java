@@ -1,5 +1,11 @@
 package comFrostmaki.calculator;
 
+import java.text.BreakIterator;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,18 +72,16 @@ public class MainActivity extends Activity implements OnClickListener{
     	but_del=(Button)findViewById(R.id.but_del);
     	but_clear=(Button)findViewById(R.id.but_clear);
     	
-    	but_add=(Button)findViewById(R.id.but_add);//+
-    	but_minus=(Button)findViewById(R.id.but_minus);//-
+    	but_add=(Button)findViewById(R.id.but_add);              //+
+    	but_minus=(Button)findViewById(R.id.but_minus);          //-
     	but_multiplied=(Button)findViewById(R.id.but_multiplied);//*
-    	but_divided=(Button)findViewById(R.id.but_divided);// /
+    	but_divided=(Button)findViewById(R.id.but_divided);      // /
     	
     	but_equal=(Button)findViewById(R.id.but_equal);
     	
     	but_point=(Button)findViewById(R.id.but_point);
     	
-    	inputStr=inputText.getText().toString();
-    	inputStr2=inputText.getText().toString();
-    	outputStr2=null;
+
     	
     	//click事件
         but_one.setOnClickListener(this);
@@ -118,151 +122,200 @@ public class MainActivity extends Activity implements OnClickListener{
 		case R.id.but_nine:
 		case R.id.but_zero:
 		case R.id.but_point:
-			if (inputText.getText()==null){
-				outputStr2=null;
-				OutputText.setText(outputStr2);
-			}
-			inputStr=inputStr+((Button)v).getText().toString();
-			inputStr2=inputStr2+((Button)v).getText().toString();
-			inputText.setText(inputStr);
-			getResult();
-			Log.d("cuowu", "123456789");
-			break;
+            inputText.setText(inputText.getText().toString()+((Button)v).getText().toString());
+            break;
 		case R.id.but_add:
 		case R.id.but_minus:
 		case R.id.but_multiplied:
 		case R.id.but_divided:
-			if (outputStr2!=null)
-			{
-			    inputStr2=outputStr2;
-			}
-			
-			inputStr=inputStr+" "+((Button)v).getText().toString()+" ";
-			inputStr2=inputStr2+((Button)v).getText().toString();
-			inputText.setText(inputStr);
-			
-			Log.d("cuowu", "+-*/");
+			inputText.setText(inputText.getText().toString()+((Button)v).getText().toString());
 			break;
 		case R.id.but_del:
-			
-				inputStr=inputStr.substring(0, inputStr.length()-1);
-			     		
-				inputText.setText(inputStr);
-			
-			Log.d("cuowu", "del");
+			inputText.setText(inputText.getText().toString().substring(0, inputText.getText().toString().length()-1));
 			break;
 		case R.id.but_clear:
-			inputStr="";
-			inputText.setText(inputStr);
+			
+			inputText.setText("");
 			OutputText.setText("");
+			
 			Log.d("cuowu", "clear");
 			break;
 		case R.id.but_equal:
-			getResult();
-			Log.d("cuowu", "equal");
+			inputStr=inputText.getText().toString();
+			String result="";
+			try{
+				result=cal(inputStr);
+				
+			}catch(Exception e){
+				System.out.println(e+"33333333");
+				
+			}finally{
+				OutputText.setText(result);
+			}
 			break;
 		
 		}
 	}
 	
-	public void getResult(){
-		int i;
-//		int k=0;
-//		int start=0;
-		double double1;
-		double double2;
-		double result;
-//		String a;
-//		String[] shuzu=null;
-		String string1=null;
-		String string2=null;
+	
 	
 		
-			if(inputStr2.contains("+")||inputStr2.contains("-")||inputStr2.contains("*")||inputStr2.contains("/")){
-				if(inputStr2.contains("+")){
-					i=inputStr2.indexOf("+");
-					string1=inputStr2.substring(0,i);
-					string2=inputStr2.substring(i+1);
-					double1=Double.parseDouble(string1);
-					double2=Double.parseDouble(string2);
-					result=double1+double2;
-					outputStr2=Double.toString(result);
-				}else if(inputStr2.contains("-")){
-					i=inputStr2.indexOf("-");
-					string1=inputStr2.substring(0,i);
-					string2=inputStr2.substring(i+1);
-					double1=Double.parseDouble(string1);
-					double2=Double.parseDouble(string2);
-					result=double1-double2;
-					outputStr2=Double.toString(result);
-				}else if(inputStr2.contains("*")){
-					i=inputStr2.indexOf("*");
-					string1=inputStr2.substring(0,i);
-					string2=inputStr2.substring(i+1);
-					double1=Double.parseDouble(string1);
-					double2=Double.parseDouble(string2);
-					result=double1*double2;
-					outputStr2=Double.toString(result);
-				}else if(inputStr2.contains("/")){
-					i=inputStr2.indexOf("/");
-					string1=inputStr2.substring(0,i);
-					string2=inputStr2.substring(i+1);
-					double1=Double.parseDouble(string1);
-					double2=Double.parseDouble(string2);
-					result=double1/double2;
-					outputStr2=Double.toString(result);
-				}
-				OutputText.setText(outputStr2);
-			}
-			else
-			{
-				return;
-			}
-				
-//				for(i=0;i<=inputStr2.length();i++){
-//					a=inputStr2.substring(i);
-//				}
-			}
-//			if (a.equals("+")||a.equals("-")||a.equals("*")||a.equals("/")){
-//				
-//				shuzu[k]=inputStr2.substring(start,a.length());
-//				start=inputStr2.indexOf(a);
-//				k=k+1;
-//				start=start+1;
-//				//string2=inputStr2.substring(a.length()+1);
-//				Log.d("shuju", shuzu[k]+" ");
-//			}
-//           
-//            string1=string1+a;
 		
-//		int int1 =inputStr.indexOf(" ",int0);//第一个空格
-//		String str2 =inputStr.substring(0, int1);//前一个数字
-//		double d2=Double.parseDouble(str2);
-//		int int3 =inputStr.indexOf(" ", int1+2);//再往后一个空格
-//		String str4 =inputStr.substring(int1+3);//后一个数字
-//		double d4=Double.parseDouble(str4);
-//		String str5 =inputStr.substring(int1+1);   //算数运算符
-//		//int0=int0+2;
-//		double d6 = 0;
-//		if (str5.equals("+")){
-//			d6=d2 + d4;
-//		}else if(str5.equals("-")){
-//			d6=d2 - d4;
-//		}else if(str5.equals("*")){
-//			d6=d2 * d4;
-//		}else if(str5.equals("/")){
-//			if(d4==0)
-//			{
-//				d6=0;
-//			}else
-//			{
-//			    d6=d2 / d4;
-//			}
-//		}
-//		
-//		OutputText.setText((int)d6+"");	
-			
+		
+		
+	
+	//对转化后的数组进行逆波兰计算
+	private static String cal(String inputStr) {
+        String rpnExp ="";
+        
+        String[] afterTrans=translate(inputStr);
+        
+        if (afterTrans == null)
+     	   return null;
+        
+        
+    	Stack<Double> stackShuZi =new Stack<Double>();
+    	Stack<String> stackSuan =new Stack<String>();
+    	
+         for (String input: afterTrans) {
+              if ( isOperator(input)) {
+                   
+                   while (!stackSuan.empty()) {
+                         if ( comparePrecedence(input,stackSuan.peek()) <= 0) {
+                        	String ysf =stackSuan.pop();
+                 			double jg=0.0;
+                 			double val_1=stackShuZi.pop();
+                 			double val_2=stackShuZi.pop();
+                 			if(ysf.equals("+")) {
+                 				jg=val_1+val_2;
+                 					
+                 			}else if(ysf.equals("-")) {
+                 				jg=val_2-val_1;
+                 				    
+                 			}else if(ysf.equals("*")) {
+                 				jg=val_1*val_2;
+                 				   
+                 			}else if(ysf.equals("/")) {
+                 				jg=val_2/val_1;
+                 				
+                 			}
+                 			stackShuZi.push(jg);
+                            continue;
+                        }
+                        if( comparePrecedence(input,stackSuan.peek()) > 0){
+                        	stackSuan.add(input);
+                        	
+                        }
+                     break;
+                  }
+                  if(stackSuan.empty()){ 
+                	  stackSuan.add(input);
+                  }
+             }
+              else {
+            	  try{
+            		  System.out.println( input+"555555");
+            		  Double val=Double.parseDouble(input);
+            		  stackShuZi.add(val);
+            		  
+            	  }catch(Exception e) {
+            		  System.out.println( e+"1111111");
+            	  }
+             }
+        }
+        
+         while (!stackSuan.empty()) {
+        	String ysf =stackSuan.pop();
+  			double jg=0.0;
+  			double val_1=stackShuZi.pop();
+ 			double val_2=stackShuZi.pop();
+ 			if(ysf.equals("+")) {
+ 				jg=val_1+val_2;
+ 					
+ 			}else if(ysf.equals("-")) {
+ 				jg=val_2-val_1;
+ 				    
+ 			}else if(ysf.equals("*")) {
+ 				jg=val_1*val_2;
+ 				   
+ 			}else if(ysf.equals("/")) {
+ 				jg=val_2/val_1;
+ 				
+ 			}
+  			stackShuZi.push(jg);
+        }
+        try{
+        	System.out.println(stackShuZi.size());
+        	rpnExp=stackShuZi.peek().toString();
+        }catch(Exception e){
+        	System.out.println(e+"2222222");
+        	
+        }
+        System.out.println(rpnExp+"4444444");
+         return rpnExp;
+         
+  }
+		
+	//////////////////////////////////////////
+	/////////////////////////////////////////
+	///////////////////////////////////////////
+	
+		
+
+	//将输入的算术表达式分割成数组
+	public static String[] translate(String inputStr){
+		
+		String lastshuzi="";
+		ArrayList<String>    strArr = new ArrayList<String>();
+		
+		
+		for (char ch: inputStr.toCharArray()){
+			String str = Character. toString(ch);
+            if ( isOperator(str)) {      
+               if(lastshuzi==""){
+            	   strArr.add(str);
+               }else{
+            	   strArr.add(lastshuzi);
+            	   strArr.add(str);
+                
+            	   lastshuzi = "";
+               }
+           }
+            else {
+                lastshuzi += ch;
+           }
+      }
+		  // Add the last operand
+        strArr.add(lastshuzi);
+        
+        String[] outputs = new String[strArr.size()];
+         return strArr.toArray(outputs);
 	}
+	
+	
+	//设置运算符的优先级
+	 private final static Map<String, Integer> OPERATORS = new HashMap<String, Integer>();
+     
+     static{
+            OPERATORS.put( "+", 0);
+            OPERATORS.put( "-", 0);
+            OPERATORS.put( "*", 1);
+            OPERATORS.put( "/", 1);
+     }
+     
+     //根据运算符得到优先级
+     private static boolean isOperator(String str) {
+            return OPERATORS.containsKey(str);
+     }
+     
+     //比较优先级，0为优先级相同，-1优先级低，1优先级高
+     private static final int comparePrecedence(String op1, String op2) {
+         
+         return OPERATORS.get(op1) - OPERATORS.get(op2);
+  }
+		
+}
+	
     
     
 
