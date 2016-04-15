@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">JSON Application</string>
+    <string name="toast_text">请输入城市名称</string>
+</resources>
