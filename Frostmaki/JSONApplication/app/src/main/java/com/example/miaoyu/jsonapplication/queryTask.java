@@ -45,7 +45,7 @@ public class queryTask extends AsyncTask<String,String,String> {
             URL url = new URL(request);
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
-            connection.setRequestMethod("POST");
+            connection.setRequestMethod("GET");
             connection.setDoOutput(true);
             connection.setDoInput(true);
 
@@ -54,12 +54,7 @@ public class queryTask extends AsyncTask<String,String,String> {
 
             connection.setUseCaches(false);
 
-            DataOutputStream out =new DataOutputStream(connection.getOutputStream());
-            out.writeBytes(request);
 
-
-            out.flush();
-            out.close();
 
             reader=new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
