@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="btn_tag_clear">C</string>
+    <string name="btn_tag_division">÷</string>
+    <string name="btn_tag_multiplication">×</string>
+    <string name="btn_tag_del">DEL</string>
+    <string name="btn_tag_float">.</string>
+    <string name="btn_tag_add">+</string>
+    <string name="btn_tag_less">-</string>
+    <string name="btn_tag_equal">=</string>
+    <string name="btn_num_zero">0</string>
+    <string name="btn_num_one">1</string>
+    <string name="btn_num_two">2</string>
+    <string name="btn_num_three">3</string>
+    <string name="btn_num_four">4</string>
+    <string name="btn_num_fives">5</string>
+    <string name="btn_num_six">6</string>
+    <string name="btn_num_seven">7</string>
+    <string name="btn_num_eight">8</string>
+    <string name="btn_num_nine">9</string>
+</resources>
