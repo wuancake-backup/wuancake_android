@@ -87,14 +87,13 @@ public class QueryAsyncTask extends AsyncTask<String,String,String>{
         Log.e("输出", "222222");
         try {
             JSONObject jsonobject_root = new JSONObject(s);//根元素
-            Log.e("输出","33333");
+
             JSONArray jsonarray =jsonobject_root.getJSONArray("HeWeather data service 3.0");//根元素的值得array
-            Log.e("输出","44444");
+
             JSONObject jsonobject_element =jsonarray.getJSONObject(0);//根元素的值得array的object
-            Log.e("输出","55555");
+
             statusString=jsonobject_element.getString("status");
             if (statusString.equals("ok")){
-                Log.e("输出","66666");
                 JSONObject basic=jsonobject_element.getJSONObject("basic");
                 line_citycnty="城市："+basic.getString("city")+"    国家："+basic.getString("cnty");
                 line_loctime="数据更新当地时间："+basic.getJSONObject("update").getString("loc");
@@ -130,7 +129,6 @@ public class QueryAsyncTask extends AsyncTask<String,String,String>{
                 output = statusString;
 
             }
-            Log.e("输出", "111111");
         }catch (Exception e){
             Log.e("异常", "onPostExecute: "+e );
         }
