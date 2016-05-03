@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ListView</string>
+    <string name="btnName">下载</string>
+    <string name="viewTitle">标题</string>
+    <string name="viewDescribe">描述</string>
+    <string name="viewSize">30M</string>
+</resources>
