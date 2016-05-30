@@ -14,8 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    public Button one,two,three,four,five,six,seven,eight,nine,zero;
-    public Button div,mul,c,add,sub,del;// /,x,c,+,-,删除
+    public Button one,two,three,four,five,six,seven,eight,nine,zero,point;
+    public Button div,mul,c,add,sub,del,equal;// /,x,c,+,-,删除
     public TextView firstLine,secondLine,thirdLine;
     public double result; //存储计算结果
     public double num1=0,num2=0;
@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+
         one=(Button)findViewById(R.id.one);
         two=(Button)findViewById(R.id.two);
         three=(Button)findViewById(R.id.three);
@@ -40,12 +40,14 @@ public class MainActivity extends AppCompatActivity {
         eight=(Button)findViewById(R.id.eight);
         nine=(Button)findViewById(R.id.nine);
         zero=(Button)findViewById(R.id.zero);
+        point=(Button)findViewById(R.id.point);
         c=(Button)findViewById(R.id.c);
         div=(Button)findViewById(R.id.div);
         add=(Button)findViewById(R.id.add);
         sub=(Button)findViewById(R.id.sub);
         del=(Button)findViewById(R.id.del);
         mul=(Button)findViewById(R.id.mul);
+        equal=(Button)findViewById(R.id.equal);
         firstLine=(TextView)findViewById(R.id.firstLine);
         secondLine=(TextView)findViewById(R.id.secondLine);
         thirdLine=(TextView)findViewById(R.id.thirdLine);
@@ -60,18 +62,25 @@ public class MainActivity extends AppCompatActivity {
         eight.setOnClickListener(cl);
         nine.setOnClickListener(cl);
         zero.setOnClickListener(cl);
+        point.setOnClickListener(cl);
+        c.setOnClickListener(cl);
+        add.setOnClickListener(cl);
+        sub.setOnClickListener(cl);
+        del.setOnClickListener(cl);
+        mul.setOnClickListener(cl);
+        equal.setOnClickListener(cl);
 
 
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+    /*    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
     }
 
     @Override
@@ -105,6 +114,10 @@ public class MainActivity extends AppCompatActivity {
                     firstLine.setText("");
                     secondLine.setText("");
                     thirdLine.setText("0");
+                    op=0;
+                    isEqual=false;
+                    num1=0;
+                    num2=0;
                     break;
                 case R.id.del:
                     if(secondLine.getText().toString().equals("")){
@@ -130,9 +143,17 @@ public class MainActivity extends AppCompatActivity {
                         secondLine.setText("");
                         thirdLine.setText("");
                     }
-                    String myLine0=firstLine.getText().toString();
-                    myLine0+="0";
-                    firstLine.setText(myLine0);
+
+                    if(op==0) {
+                        String myLine0 = firstLine.getText().toString();
+                        myLine0 += "0";
+                        firstLine.setText(myLine0);
+                    }
+                    else{
+                        String myLine0s = secondLine.getText().toString();
+                        myLine0s+="0";
+                        secondLine.setText(myLine0s);
+                    }
                     break;
                 case R.id.one:
                     if(isEqual){
@@ -140,9 +161,17 @@ public class MainActivity extends AppCompatActivity {
                         secondLine.setText("");
                         thirdLine.setText("");
                     }
-                    String myLine1=firstLine.getText().toString();
-                    myLine1+="1";
-                    firstLine.setText(myLine1);
+
+                    if(op==0) {
+                        String myLine1=firstLine.getText().toString();
+                        myLine1+="1";
+                        firstLine.setText(myLine1);
+                    }
+                    else{
+                        String myLine1s=secondLine.getText().toString();
+                        myLine1s+="1";
+                        secondLine.setText(myLine1s);
+                    }
                     break;
                 case R.id.two:
                     if(isEqual){
@@ -150,9 +179,17 @@ public class MainActivity extends AppCompatActivity {
                         secondLine.setText("");
                         thirdLine.setText("");
                     }
-                    String myLine2=firstLine.getText().toString();
-                    myLine2+="2";
-                    firstLine.setText(myLine2);
+
+                    if(op==0) {
+                        String myLine2=firstLine.getText().toString();
+                        myLine2+="2";
+                        firstLine.setText(myLine2);
+                    }
+                    else{
+                        String myLine2s=secondLine.getText().toString();
+                        myLine2s+="2";
+                        secondLine.setText(myLine2s);
+                    }
                     break;
                 case R.id.three:
                     if(isEqual){
@@ -160,9 +197,16 @@ public class MainActivity extends AppCompatActivity {
                         secondLine.setText("");
                         thirdLine.setText("");
                     }
-                    String myLine3 =firstLine.getText().toString();
-                    myLine3+="3";
-                    firstLine.setText(myLine3);
+                    if(op==0) {
+                        String myLine3=firstLine.getText().toString();
+                        myLine3+="3";
+                        firstLine.setText(myLine3);
+                    }
+                    else{
+                        String myLine3s=secondLine.getText().toString();
+                        myLine3s+="3";
+                        secondLine.setText(myLine3s);
+                    }
                     break;
                 case R.id.four:
                     if(isEqual){
@@ -170,9 +214,16 @@ public class MainActivity extends AppCompatActivity {
                         secondLine.setText("");
                         thirdLine.setText("");
                     }
-                    String myLine4=firstLine.getText().toString();
-                    myLine4+="4";
-                    firstLine.setText(myLine4);
+                    if(op==0) {
+                        String myLine4=firstLine.getText().toString();
+                        myLine4+="4";
+                        firstLine.setText(myLine4);
+                    }
+                    else{
+                        String myLine4s=secondLine.getText().toString();
+                        myLine4s+="4";
+                        secondLine.setText(myLine4s);
+                    }
                     break;
                 case R.id.five:
                     if(isEqual){
@@ -180,9 +231,16 @@ public class MainActivity extends AppCompatActivity {
                         secondLine.setText("");
                         thirdLine.setText("");
                     }
-                    String myLine5=firstLine.getText().toString();
-                    myLine5+="5";
-                    firstLine.setText(myLine5);
+                    if(op==0) {
+                        String myLine5=firstLine.getText().toString();
+                        myLine5+="5";
+                        firstLine.setText(myLine5);
+                    }
+                    else{
+                        String myLine5s=secondLine.getText().toString();
+                        myLine5s+="5";
+                        secondLine.setText(myLine5s);
+                    }
                     break;
                 case R.id.six:
                     if(isEqual){
@@ -190,9 +248,16 @@ public class MainActivity extends AppCompatActivity {
                         secondLine.setText("");
                         thirdLine.setText("");
                     }
-                    String myLine6=firstLine.getText().toString();
-                    myLine6+="6";
-                    firstLine.setText(myLine6);
+                    if(op==0) {
+                        String myLine6=firstLine.getText().toString();
+                        myLine6+="6";
+                        firstLine.setText(myLine6);
+                    }
+                    else{
+                        String myLine6s=secondLine.getText().toString();
+                        myLine6s+="6";
+                        secondLine.setText(myLine6s);
+                    }
                     break;
                 case R.id.seven:
                     if(isEqual){
@@ -200,9 +265,17 @@ public class MainActivity extends AppCompatActivity {
                         secondLine.setText("");
                         thirdLine.setText("");
                     }
-                    String myLine7=firstLine.getText().toString();
-                    myLine7+="7";
-                    firstLine.setText(myLine7);
+
+                    if(op==0) {
+                        String myLine7=firstLine.getText().toString();
+                        myLine7+="7";
+                        firstLine.setText(myLine7);
+                    }
+                    else{
+                        String myLine7s=secondLine.getText().toString();
+                        myLine7s+="7";
+                        secondLine.setText(myLine7s);
+                    }
                     break;
                 case R.id.eight:
                     if(isEqual){
@@ -210,9 +283,16 @@ public class MainActivity extends AppCompatActivity {
                         secondLine.setText("");
                         thirdLine.setText("");
                     }
-                    String myLine8=firstLine.getText().toString();
-                    myLine8+="8";
-                    firstLine.setText(myLine8);
+                    if(op==0) {
+                        String myLine8=firstLine.getText().toString();
+                        myLine8+="8";
+                        firstLine.setText(myLine8);
+                    }
+                    else{
+                        String myLine8s=secondLine.getText().toString();
+                        myLine8s+="8";
+                        secondLine.setText(myLine8s);
+                    }
                     break;
                 case R.id.nine:
                     if(isEqual){
@@ -220,16 +300,43 @@ public class MainActivity extends AppCompatActivity {
                         secondLine.setText("");
                         thirdLine.setText("");
                     }
-                    String myLine9=firstLine.getText().toString();
-                    myLine9+="9";
-                    firstLine.setText(myLine9);
+
+                    if(op==0) {
+                        String myLine9=firstLine.getText().toString();
+                        myLine9+="9";
+                        firstLine.setText(myLine9);
+                    }
+                    else{
+                        String myLine9s=secondLine.getText().toString();
+                        myLine9s+="9";
+                        secondLine.setText(myLine9s);
+                    }
+                    break;
+                case R.id.point:
+
+                    if(isEqual){
+                        firstLine.setText("");
+                        secondLine.setText("");
+                        thirdLine.setText("");
+                    }
+
+                    if(op==0) {
+                        String myLinePoint=firstLine.getText().toString();
+                        myLinePoint+=".";
+                        firstLine.setText( myLinePoint);
+                    }
+                    else{
+                        String myLinePoints=secondLine.getText().toString();
+                        myLinePoints+=".";
+                        secondLine.setText( myLinePoints);
+                    }
                     break;
                 case R.id.add:
                     if(op!=0)
                         return;
                     String firstAdd=firstLine.getText().toString();
                     String thirdAdd=thirdLine.getText().toString();
-                    if(thirdAdd.equals("")){
+                    if(thirdAdd.equals("")||thirdAdd.equals("0")){
                         if(firstAdd.equals("")){
                             return;
                         }
@@ -251,7 +358,7 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     String firstSub=firstLine.getText().toString();
                     String thirdSub=thirdLine.getText().toString();
-                    if(thirdSub.equals("")){
+                    if(thirdSub.equals("")||thirdSub.equals("0")){
                         if(firstSub.equals("")){
                             return;
                         }
@@ -273,7 +380,7 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     String firstMul=firstLine.getText().toString();
                     String thirdMul=thirdLine.getText().toString();
-                    if(thirdMul.equals("")){
+                    if(thirdMul.equals("")||thirdMul.equals("0")){
                         if(firstMul.equals("")){
                             return;
                         }
@@ -295,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     String firstDiv=firstLine.getText().toString();
                     String thirdDiv=thirdLine.getText().toString();
-                    if(thirdDiv.equals("")){
+                    if(thirdDiv.equals("")||thirdDiv.equals("0")){
                         if(firstDiv.equals("")){
                             return;
                         }
@@ -316,10 +423,14 @@ public class MainActivity extends AppCompatActivity {
                     String second=secondLine.getText().toString();
                     if(second.equals(""))
                         return;
+                    second=second.substring(1,second.length());
                     num2=Double.valueOf(second);
                     firstLine.setText("");
                     secondLine.setText("");
                     switch (op){
+                        case 0:
+                            result=Double.parseDouble(thirdLine.getText().toString());
+                            break;
                         case 1:
                             result=num1+num2;
                             break;
