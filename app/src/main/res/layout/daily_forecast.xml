@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:temp="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    >
+    <GridView
+        android:layout_centerVertical="true"
+        android:id="@+id/daily_forecast_grid"
+        android:numColumns="7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+       android:layout_marginTop="90dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <com.example.administrator.niweather.MyTempLine
+        android:id="@+id/temp_line_day"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        temp:textSize="15sp"
+        temp:textColor="#F0EDED"
+        temp:lineColor="#e0ffffff"
+        temp:mBackgroundColor="#00000000"
+        temp:lineSize="4"
+        temp:pointColor="#fff"
+        temp:pointRadius="8" />
+    <com.example.administrator.niweather.MyTempLine
+        android:id="@+id/temp_line_night"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        temp:textSize="15sp"
+        temp:textColor="#F0EDED"
+        temp:lineColor="#e0ffffff"
+        temp:mBackgroundColor="#00000000"
+        temp:lineSize="4"
+        temp:pointColor="#fff"
+        temp:pointRadius="8"/>
+    </LinearLayout>
+</RelativeLayout>

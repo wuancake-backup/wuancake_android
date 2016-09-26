@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+<TextView
+    android:id="@+id/week_forecast"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    style="@style/TextStyle1"
+    android:layout_gravity="center" />
+    <TextView
+        android:id="@+id/forecast_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextStyle3"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
+    <ImageView
+        android:id="@+id/day_weather_map"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
+    <View
+        android:background="#00000000"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"/>
+    <ImageView
+        android:id="@+id/night_weather_map"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/wind_forecast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextStyle1"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/wind_sp_forecast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextStyle3"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+</LinearLayout>

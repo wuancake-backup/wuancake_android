@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">正经的天气预报</string>
+    <string name="select_province">请选择省份:</string>
+    <string name="select_city">请选择城市:</string>
+    <string name="select_county">请选择县区:</string>
+    <string name="get_weather">获取天气</string>
+    <string name="temp_unit">°</string>
+    <string name="aqi">空气质量</string>
+    <string name="alarm">无预警</string>
+</resources>

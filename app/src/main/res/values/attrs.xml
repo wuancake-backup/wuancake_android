@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="temperature" format="string"/>
+    <attr name="textSize" format="dimension"/>
+    <attr name="textColor" format="color"/>
+    <attr name="lineColor" format="color"/>
+    <attr name="pointColor" format="color"/>
+    <attr name="lineSize" format="integer"/>
+    <attr name="pointRadius" format="integer"/>
+    <attr name="mBackgroundColor" format="color"/>
+    <declare-styleable name="TempLine">
+        <attr name="temperature"/>
+        <attr name="textSize"/>
+        <attr name="textColor"/>
+        <attr name="lineColor"/>
+        <attr name="lineSize"/>
+        <attr name="pointColor"/>
+        <attr name="pointRadius"/>
+        <attr name="mBackgroundColor"/>
+    </declare-styleable>
+</resources>

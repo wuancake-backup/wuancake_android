@@ -1,0 +1,31 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@android:color/holo_blue_light</item>
+        <item name="colorPrimaryDark">@android:color/holo_blue_light</item>
+        <item name="colorAccent">@android:color/holo_blue_light</item>
+    </style>
+    <style name="TextStyle1">
+        <item name="android:textColor">#FEFEFF</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="TextStyle2">
+        <item name="android:textColor">#FEFEFF</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="TextStyle3">
+        <item name="android:textColor">#FEFEFF</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>
