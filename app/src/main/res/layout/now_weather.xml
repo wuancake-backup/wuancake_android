@@ -8,7 +8,7 @@
     <!--实时天气布局-->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="130dp">
         <TextView
             android:id="@+id/current_temp"
             android:layout_width="wrap_content"
@@ -17,6 +17,7 @@
             android:textColor="#fff"
             android:textStyle="bold"
             android:typeface="serif"
+            android:layout_marginRight="3dp"
             android:layout_marginLeft="15sp"
             android:layout_alignParentBottom="true"
             />
@@ -40,7 +41,9 @@
             android:textColor="#fff"
             android:typeface="monospace"
             android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/current_temp"
+            android:layout_toRightOf="@id/current_temp"
+            android:layout_alignBottom="@id/current_temp"
+            android:layout_marginBottom="10dp"
             />
         <ImageView
             android:id="@+id/now_weather_icon"

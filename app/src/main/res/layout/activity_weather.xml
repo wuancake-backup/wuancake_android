@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.administrator.niweather.WeatherActivity"
-    android:background="@mipmap/sun1"
+    android:background="#d050A6F4"
     android:id="@+id/weather_linear">
     <!--位置信息-->
 <TextView
@@ -43,24 +43,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <!--实时天气-->
-            <include layout="@layout/now_weather"
-                />
-            <!--6天天气预报详情-->
+                <include layout="@layout/now_weather"
+                    />
+                <!--6天天气预报详情-->
                 <View
                     android:background="#66F3EDED"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
-            <android.support.v4.view.ViewPager
-                android:id="@+id/forecast_viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"/>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/forecast_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"/>
+
+                <include layout="@layout/daily_forecast"/>
+
                 <View
                     android:background="#66F3EDED"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
             <!--7天天气变化曲线-->
-            <include layout="@layout/daily_forecast"/>
-        </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

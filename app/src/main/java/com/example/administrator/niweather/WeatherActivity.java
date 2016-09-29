@@ -33,7 +33,6 @@ import JsonBean.Now;
 import JsonBean.NowCond;
 import JsonBean.Results;
 import JsonBean.Update;
-import JsonBean.dailyForecast.Cond;
 import JsonBean.dailyForecast.Tmp;
 import JsonBean.dailyForecast.Wind;
 import Utils.HttpUtil;
@@ -120,6 +119,7 @@ public class WeatherActivity extends AppCompatActivity {
     private List<String> nightMapCodeList;
     private AqiCity aqiCity;
     private Aqi aqi2;
+    private Date date;//当前时间
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +130,6 @@ public class WeatherActivity extends AppCompatActivity {
         Handler jsonHandler = new Handler() {//进行多次解析，保证解析成功
             @Override
             public void handleMessage(Message msg) {
-
                 if (result == null) {
                     getWeatherInfo();
                     sendEmptyMessageDelayed(0, 100);
@@ -144,6 +143,7 @@ public class WeatherActivity extends AppCompatActivity {
                     getForecastIcon();
                     sendEmptyMessageDelayed(0, 500);
                 } else {
+                    initBackground();
                     initInfo();
                     initHeight();
                     if (dailyForecastList!=null){
@@ -161,18 +161,14 @@ public class WeatherActivity extends AppCompatActivity {
         jsonHandler.sendEmptyMessageDelayed(0, 100);
     }
 
+    /**
+     * 一些初始化操作
+     */
     private void init() {
         initHeight();
-        Date date = new Date();
+        date = new Date();
         week = new Week();
         SimpleDateFormat dateFormat = new SimpleDateFormat("E");
-        SimpleDateFormat hourFormat = new SimpleDateFormat("HH");
-        String nowHour = hourFormat.format(date);
-        if (Integer.parseInt(nowHour) > 18) {
-            weatherLinear.setBackgroundResource(R.mipmap.night);
-        }else {
-            weatherLinear.setBackgroundResource(R.mipmap.sun1);
-        }
         nowWeek = dateFormat.format(date);
         weekCode = week.getWeekCode(nowWeek);
         initWeather();
@@ -185,6 +181,25 @@ public class WeatherActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * 初始化背景图片
+     */
+    public void initBackground(){
+        if (nowWeather.contains("阴")){
+            weatherLinear.setBackgroundResource(R.mipmap.cloud);
+        }else if (nowWeather.contains("雨")){
+            weatherLinear.setBackgroundResource(R.mipmap.rain);
+        }else if (nowWeather.contains("多云")){
+            weatherLinear.setBackgroundResource(R.mipmap.cloud2);
+        }else {
+            weatherLinear.setBackgroundResource(R.mipmap.sun1);
+        }
+        SimpleDateFormat hourFormat = new SimpleDateFormat("HH");
+        String nowHour = hourFormat.format(date);
+        if (Integer.parseInt(nowHour) > 18) {
+            weatherLinear.setBackgroundResource(R.mipmap.night);
+        }
+    }
     /**
      * 初始化高度
      */
@@ -391,7 +406,6 @@ public class WeatherActivity extends AppCompatActivity {
             ImageView day_weather_map = (ImageView) view.findViewById(R.id.day_weather_map);
             ImageView night_weather_map = (ImageView) view.findViewById(R.id.night_weather_map);
             DailyForecast dailyForecast = dailyForecastList.get(position);
-            Cond cond = dailyForecast.getCond();//天气信息
             Tmp tmp = dailyForecast.getTmp();//温度信息
             Wind wind = dailyForecast.getWind();//风向信息
             //获取七天预报的图片并展示
@@ -406,7 +420,6 @@ public class WeatherActivity extends AppCompatActivity {
             } else {
                 int forecastWeekCode = weekCode + position;
                 if (forecastWeekCode > 6) {
-                    //forecastWeekCode = forecastWeekCode - 7;
                     week_forecast.setText(week.setWeek(forecastWeekCode));
                 } else {
                     week_forecast.setText(week.setWeek(forecastWeekCode));
@@ -431,6 +444,9 @@ public class WeatherActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 6天天气详情Adapter
+     */
     class PagerAdapter extends android.support.v4.view.PagerAdapter {
 
         @Override
