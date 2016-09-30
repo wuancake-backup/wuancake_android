@@ -25,13 +25,13 @@ public class Calculator {
 		double val = 0.0;
 		int offset = 0;
 		String[] tmp = s.split("[-/+\\*]");
-		char[] operator = new char[tmp.length-1];
+		char[] operator = new char[tmp.length - 1];
 
 		// ªÒ»°‘ÀÀ„∑˚
 		offset += tmp[0].length();
 		operator[0] = s.charAt(offset);
 
-		for (int i = 1; i < (tmp.length-1); i++) {
+		for (int i = 1; i < (tmp.length - 1); i++) {
 			offset += tmp[i].length() + 1;
 			operator[i] = s.charAt(offset);
 		}
@@ -62,7 +62,7 @@ public class Calculator {
 		val += Double.valueOf(tmp[0]).doubleValue();
 		for (int i = 1; i < tmp.length; i++) {
 
-			switch (operator[i-1]) {
+			switch (operator[i - 1]) {
 			case '+':
 				val += Double.valueOf(tmp[i]).doubleValue();
 				break;
@@ -79,10 +79,10 @@ public class Calculator {
 		StringBuffer sb = viewText;
 		String s1 = "-/+*)";
 		String s2 = "-/+*(";
-		
+
 		do {
-			index = sb.indexOf(")", index+1);
-			if ((index > 0) && (index != sb.length())) {
+			index = sb.indexOf(")", index + 1);
+			if ((index > 0) && ((index+1) != sb.length())) {
 				if (s1.indexOf(sb.charAt(index + 1)) == -1) {
 					return false;
 				}
@@ -90,9 +90,9 @@ public class Calculator {
 		} while (index != -1);
 
 		index = 0;
-		
+
 		do {
-			index = sb.indexOf("(", index+1);
+			index = sb.indexOf("(", index + 1);
 			if (index > 0) {
 				if (s2.indexOf(sb.charAt(index - 1)) == -1) {
 					return false;
@@ -126,7 +126,7 @@ public class Calculator {
 			} while (true);
 		}
 
-		if ((s.indexOf("(") > 0) || (s.indexOf(")") > 0)) {
+		if ((s.indexOf("(") >= 0) || (s.indexOf(")") >= 0)) {
 			return false;
 		}
 
@@ -135,7 +135,7 @@ public class Calculator {
 			viewText.setLength(viewText.length() - 2);
 		}
 
-//		System.out.println(viewText);
+		// System.out.println(viewText);
 		return true;
 	}
 
