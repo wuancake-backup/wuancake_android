@@ -24,7 +24,13 @@ public class Calculator {
 
 		double val = 0.0;
 		int offset = 0;
+
 		String[] tmp = s.split("[-/+\\*]");
+
+		if (tmp.length == 1) {
+			return s;
+		}
+
 		char[] operator = new char[tmp.length - 1];
 
 		// »ñÈ¡ÔËËã·û
@@ -82,7 +88,7 @@ public class Calculator {
 
 		do {
 			index = sb.indexOf(")", index + 1);
-			if ((index > 0) && ((index+1) != sb.length())) {
+			if ((index > 0) && ((index + 1) != sb.length())) {
 				if (s1.indexOf(sb.charAt(index + 1)) == -1) {
 					return false;
 				}
@@ -106,6 +112,7 @@ public class Calculator {
 	public boolean parseText() {
 		StringBuffer s = new StringBuffer(viewText);
 		int index1, index2;
+		String tmp;
 
 		if (checkText() == false) {
 			return false;
@@ -117,8 +124,13 @@ public class Calculator {
 				index2 = s.indexOf(")");
 				index1 = s.lastIndexOf("(", index2);
 				if ((index1 != -1) && (index2 != -1)) {
-					String tmp = s.substring(index1 + 1, index2);
-					tmp = this.calText(tmp);
+					// String tmp = s.substring(index1 + 1, index2);
+					// tmp = this.calText(tmp);
+
+					tmp = s.substring(index1 + 1, index2);
+					if ((tmp = this.calText(tmp)) == null) {
+						return false;
+					}
 					s.replace(index1, index2 + 1, tmp);
 				} else {
 					break;
@@ -130,7 +142,12 @@ public class Calculator {
 			return false;
 		}
 
-		viewText.append("=" + this.calText(s.toString()));
+		if ((tmp = this.calText(s.toString())) == null) {
+			return false;
+		}
+
+		// viewText.append("=" + this.calText(s.toString()));
+		viewText.append("=" + tmp);
 		if (viewText.toString().matches(".*\\.0")) {
 			viewText.setLength(viewText.length() - 2);
 		}
