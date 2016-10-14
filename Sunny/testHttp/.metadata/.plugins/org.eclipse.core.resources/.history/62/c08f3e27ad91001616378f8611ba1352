@@ -1,0 +1,13 @@
+package testHttp.com;
+
+public class testHttp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		HttpRequest demo = new HttpRequest();
+		static final String url = "http://www.weather.com.cn/data/sk/101190408.html";
+		System.out.println(HttpRequest.sendGet(url, null));
+		System.out.println("end");
+	}
+
+}
