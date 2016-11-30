@@ -1,0 +1,11 @@
+package testHttp.com;
+
+public class testHttp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		HttpRequest demo = new HttpRequest();
+		System.out.println(HttpRequest.sendGet("1", null));
+	}
+
+}

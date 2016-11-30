@@ -1,0 +1,53 @@
+package testHttp.com;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class HttpRequest {
+
+	static String sendGet(String url, String param) {
+
+		StringBuilder response = new StringBuilder();
+
+		try {
+			url = url + "?" + param;
+			URL realurl = new URL(url);
+			HttpURLConnection cn = (HttpURLConnection) realurl.openConnection();
+
+			cn.setRequestMethod("GET");
+			cn.setConnectTimeout(6 * 1000);
+			cn.setReadTimeout(6 * 1000);
+			cn.setRequestProperty("contentType", "GBK");
+
+			if (cn.getResponseCode() != 200) {
+				System.out.println("conn error!");
+			}
+
+			InputStream is = cn.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			// ByteArrayOutputStream os = new ByteArrayOutputStream();
+
+			String line;
+			while ((line = br.readLine()) != null) {
+				response.append(line);
+			}
+
+			is.close();
+
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return response.toString();
+	}
+
+}
