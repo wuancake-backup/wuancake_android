@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TestWeather</string>
+    <string name="searchBn">查询</string>
+    <string name="saveBn">保存</string>
+    <string name="cancelBn">取消</string>
+    <string name="province">省份</string>
+    <string name="city">城市</string>
+    <string name="choosecity">请选择城市</string>
 </resources>

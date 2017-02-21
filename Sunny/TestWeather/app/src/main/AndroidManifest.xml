@@ -16,6 +16,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ChooseCityActivity"
+            android:label="ChooseCity">
+        </activity>
+
         <service android:name="com.example.wch.testweather.service.WeatherService" >
             <intent-filter >
                 <action android:name="WeatherService" />

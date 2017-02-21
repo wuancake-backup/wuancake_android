@@ -19,7 +19,7 @@ public class WeatherService extends Service {
     /**
      * 此处要与MainActivity一致
      */
-    private final String BROADCAST_ACTION = "vaint.wyt.broadcast";
+    private final String BROADCAST_ACTION = "com.example.wch.broadcast";
     private String city;
 
     @Nullable

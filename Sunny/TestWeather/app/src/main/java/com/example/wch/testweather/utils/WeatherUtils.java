@@ -57,8 +57,8 @@ public class WeatherUtils {
      */
     public static String[] getWeather(String cityName) throws IOException,
             XmlPullParserException {
-//        cityName = new String(cityName.getBytes(),"UTF-8");
-        cityName = URLEncoder.encode(cityName, "UTF-8");
+//        cityName = new String(cityName.getBytes(),"UTF-8");//将String转换为UTF-8编码
+        cityName = URLEncoder.encode(cityName, "UTF-8");//将String转换为URL编码
         InputStream detail = httpRequest.sendGet(URL,Arg+cityName);
         if (detail != null) {// 当前城市有天气信息
             ArrayList<String> list = parseWeather(detail);//解析天气
@@ -106,7 +106,6 @@ public class WeatherUtils {
 
 class httpRequest {
 
-    // return String
     static InputStream sendGet(String url, String param) throws IOException {
         url = url + "?" + param;
         URL realurl = new URL(url);
@@ -114,7 +113,6 @@ class httpRequest {
 
         cn.setRequestMethod("GET");
         cn.setConnectTimeout(6 * 1000);
-//        cn.setReadTimeout(6*1000);
         cn.setRequestProperty("contentType", "UTF-8");
 
         if (cn.getResponseCode() == HttpURLConnection.HTTP_OK) {

@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView startImage;
     private ImageView endImage;
 
-    private final String BROADCAST_ACTION = "vaint.wyt.broadcast";
+    private final String BROADCAST_ACTION = "com.example.wch.broadcast";
     private MyBroadcastReceiver myBroadcastReceiver;
     /**获取设置的选项*/
     private Map<String,Boolean> setup;
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         getSetupInfo();
-        
+
         //注册广播接收器
         IntentFilter filter = new IntentFilter();
         filter.addAction(BROADCAST_ACTION);
@@ -92,12 +94,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String selCity = data.getStringExtra("selectedCity");
+        currentCityTV.setText((CharSequence)selCity);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @Override
     public void onClick(View v) {
         if(v.getId() == R.id.currentCityTV){ // 打开选择城市界面
+            int requestCode = 0;
             Intent intent = new Intent(MainActivity.this,ChooseCityActivity.class);
-            this.startActivity(intent);
+//            this.startActivity(intent,overridePendingTransition(R.anim.push_up_in,R.anim.push_up_out));
+            this.startActivityForResult(intent,requestCode);
         }else if(v.getId() == R.id.searchBn){ // 获取天气信息
-            String city = "北京";
+            String city = currentCityTV.getText().toString();
             //开启Service服务，当再次启动时，不会执行onCreate，但仍旧执行onStart方法
             Intent intent = new Intent("WeatherService");
             intent.putExtra("city",city);
